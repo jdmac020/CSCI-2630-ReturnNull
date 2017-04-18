@@ -10,16 +10,21 @@ namespace EDeviceClaims.WebUi.Controllers
     {
         private IClaimService _claimService = new ClaimService();
         
-        public ActionResult StartClaim(Guid id)
+        public ActionResult Open(Guid policyId)
         {
-            var ClaimDomainModel = _claimService.StartClaim(id);
-            var model = new ClaimViewModel(ClaimDomainModel);
-            return View(model);
+            var claimModel = _claimService.StartClaim(policyId);
+            var viewModel = new ClaimViewModel(claimModel);
+
+            return View("Open", viewModel);
         }
 
-        public ActionResult ViewClaim(Guid id)
+        public ActionResult Details(Guid policyId)
         {
-            return null;
+
+            var claimModel = _claimService.ViewClaim(policyId);
+            var viewModel = new ClaimViewModel(claimModel);
+
+            return View("Details", viewModel);
         }
     }
 }
