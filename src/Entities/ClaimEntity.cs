@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace EDeviceClaims.Entities
 {
+    // may need to up cap App
     [Table("claims", Schema = "app")]
     public class ClaimEntity : EntityBase<Guid>
     {
