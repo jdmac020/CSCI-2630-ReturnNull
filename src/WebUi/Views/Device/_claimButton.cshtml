@@ -1,5 +1,6 @@
 ﻿@model EDeviceClaims.WebUi.Models.DeviceViewModel
 
+
 @if (Model.HasExistingClaim())
 {
     @Html.ActionLink("View Claim", "ViewClaim", "Claim", routeValues: new { policyId = Model.MostCurrentClaim.Id },

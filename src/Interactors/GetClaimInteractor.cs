@@ -10,7 +10,7 @@ namespace EDeviceClaims.Interactors
 {
     public interface IGetClaimInteractor
     {
-        ClaimEntity Execute(Guid id);
+        ClaimEntity GetClaimById(Guid policyId);
     }
 
     public class GetClaimInteractor : IGetClaimInteractor
@@ -23,16 +23,11 @@ namespace EDeviceClaims.Interactors
 
         private IClaimRepository _repo;
 
-        public GetClaimInteractor() { }
-
-        public GetClaimInteractor(IClaimRepository claimRepo)
+        public ClaimEntity GetClaimById(Guid policyId)
         {
-            _repo = claimRepo;
-        }
-
-        public ClaimEntity Execute(Guid id)
-        {
-            return Repo.GetById(id);
+            //Save a new claim using the claim repository
+            
+            return Repo.GetByPolicyId(policyId);
         }
     }
 }

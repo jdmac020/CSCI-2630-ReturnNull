@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using EDeviceClaims.Entities;
+using  EDeviceClaims.Entities;
 using EDeviceClaims.Repositories;
 
 namespace EDeviceClaims.Interactors
 {
     public interface ICreateClaimInteractor
     {
-        ClaimEntity Execute(Guid id);
+        ClaimEntity Excute(Guid id);
     }
 
     public class CreateClaimInteractor : ICreateClaimInteractor
@@ -22,15 +23,16 @@ namespace EDeviceClaims.Interactors
 
         private IClaimRepository _repo;
 
-        public CreateClaimInteractor() { }
-
         public CreateClaimInteractor(IClaimRepository claimRepo)
         {
             _repo = claimRepo;
         }
-        public ClaimEntity Execute(Guid id)
-        {
+        
+        public CreateClaimInteractor() { }
 
+        
+        public ClaimEntity Excute(Guid id)
+        {
             var newClaim = new ClaimEntity() {Id = Guid.NewGuid(), PolicyId = id};
             newClaim = Repo.Create(newClaim);
 

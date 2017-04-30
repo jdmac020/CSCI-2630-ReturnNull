@@ -13,8 +13,8 @@ namespace EDeviceClaims.WebUi.Controllers
 
         public ActionResult StartClaim(Guid id)
         {
-            var ClaimDomainModel = _claimService.StartClaim(id);
-            var model = new ClaimViewModel(ClaimDomainModel);
+            var domainModel = _claimService.StartClaim(id);
+            var model = new ClaimViewModel(domainModel);
             return View(model);
         }
 
@@ -22,7 +22,7 @@ namespace EDeviceClaims.WebUi.Controllers
         {
             try
             {
-                ClaimDomainModel claimModel = _claimService.getById(id);
+                ClaimDomainModel claimModel = _claimService.GetById(id);
                 ClaimViewModel viewModel = new ClaimViewModel(claimModel);
 
                 return View(viewModel);
